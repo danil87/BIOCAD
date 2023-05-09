@@ -3,7 +3,7 @@
     "name": "biocad",
     "builds": [
         {
-            "src": "script.js",
+            "src": "server.js",
             "use": "@vercel/node"
         }
     ],
