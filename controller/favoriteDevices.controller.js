@@ -3,29 +3,26 @@ const db = require('../db');
 class FavoriteDevicesController {
     async createFavoriteDevice(req, res){
         const {user_id, device_id} = req.body;
-        const sql = `INSERT INTO favorite_devices(user_id, device_id) VALUES($1, $2) RETURNING *`
-        const newFavoriteDevices = await db.query(sql, [user_id, device_id]);
-        res.json(newFavoriteDevices.rows[0]);
+        const newFavoriteDevices = await db`INSERT INTO favorite_devices(user_id, device_id) VALUES(${user_id}, ${device_id}) RETURNING *`;
+        res.json(newFavoriteDevices);
     }
     
     async getFavoriteDevices(req, res){
-        const sql = `SELECT devices.id, name, at_work, division, number FROM favorite_devices JOIN devices ON devices.id = device_id`
-        const favoriteDevices = await db.query(sql);
-        res.json(favoriteDevices.rows);
+        const favoriteDevices = await db`SELECT devices.id, name, at_work, division, number FROM favorite_devices JOIN devices ON devices.id = device_id`;
+        console.log(favoriteDevices);
+        res.json(favoriteDevices);
     }
 
     async getOneFavoriteDevices(req, res){
         const {device_id, user_id} = req.params;
-        const sql = `SELECT * FROM favorite_devices WHERE device_id = ${device_id} AND user_id = ${user_id}`
-        const favoriteDevices = await db.query(sql);
-        res.json(favoriteDevices.rows);
+        const favoriteDevices = await db`SELECT * FROM favorite_devices WHERE device_id = ${device_id} AND user_id = ${user_id}`;
+        res.json(favoriteDevices);
     }
 
     async deleteFavoriteDevice(req, res){
         const {device_id, user_id} = req.params;
-        const sql = `DELETE FROM favorite_devices WHERE device_id = ${device_id} AND user_id = ${user_id}`;
-        const device = await db.query(sql);
-        res.json(device.rows[0]);
+        const device = await db`DELETE FROM favorite_devices WHERE device_id = ${device_id} AND user_id = ${user_id}`;
+        res.json(device);
     }
 }
 
