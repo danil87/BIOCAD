@@ -9,7 +9,6 @@ class FavoriteDevicesController {
     
     async getFavoriteDevices(req, res){
         const favoriteDevices = await db`SELECT devices.id, name, at_work, img, division, number, notification, favorite_devices.id as favorite_id  FROM favorite_devices JOIN devices ON devices.id = device_id`;
-        console.log(favoriteDevices);
         res.json(favoriteDevices);
     }
 
