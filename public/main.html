@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/mainPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet">
+    <script src="js/Header.js" type="text/javascript"></script>
+    <title>BIOCAD</title>
+</head>
+
+<body>
+    <header-component></header-component>
+    <div class="body__content">
+        <div class="content__search">
+            <input class="search" type="text"
+                placeholder="Поиск прибора в Botanique по номеру, названию, подразделению и др.">
+            <img class="search__qr" src="imges/qr.png" height="30px" width="30px">
+        </div>
+        <div class="content__favorite">
+            <div class="favorite__text">
+                <img src="imges/hert.png" height="20px" width="20px">
+                <p>Любимые приборы</p>
+            </div>
+            <div class="favorite__table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="table__name__row">Название</th>
+                            <th class="table__status__row">Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody class="rows__devices">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <template id="table_row">
+        <tr>
+            <td class="first_column"><img><span></span></td>
+            <td class="second_column">
+                <select class="device_at_work">
+                    <option value="false">Свободен</option>
+                    <option value="true">В работе</option>
+                </select>
+            </td>
+        </tr>
+    </template>
+    <script src="js/mainPage.js" type="module"></script>
+    <script src="js/tabs.js"></script>
+</body>
+
+</html>

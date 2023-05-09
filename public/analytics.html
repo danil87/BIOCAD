@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/analytics.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="./js/Header.js" type="text/javascript"></script>
+    <title>BIOCAD</title>
+</head>
+
+<body>
+    <header-component></header-component>
+    <div class="body__content">
+        <div class="device_info" id="PDF">
+            <div class="header_device">
+                <div class="icon_and_name">
+                    <img class="icon_device">
+                    <div class="device_info_text">
+                        <span class="name_device"></span><br>
+                        <span class="division_device"></span>
+                        <span style="color: rgba(0, 0, 0, 0.6);">&bull;</span>
+                        <span class="number_device"></span>
+                    </div>
+                </div>
+                <div class="interact_device">
+                    <select id="device_at_work">
+                        <option value="false">Свободен</option>
+                        <option value="true">В работе</option>
+                    </select>
+                    <button id="is_favorite" onclick="changeFavorite()">
+                        <img style="display: block"
+                            src="./imges/3643770-favorite-heart-like-likes-love-loved_113432.png">
+                        <img style="display: none" src="./imges/heart-icon_34407.png">
+                    </button>
+                    <button>
+                        <img style="display: block" src="./imges/free-icon-gear-2311515.png">
+                    </button>
+                </div>
+            </div>
+            <div class="body_device">
+                <div style="display: flex; justify-content: space-between;">
+                    <select>
+                        <option>Работа прибора</option>
+                    </select>
+                    <div class="device_buttons">
+                        <button>
+                            <img src="./imges/Vector.png">
+                        </button>
+                        <button onclick="savePDF()"><span>СОХРАНИТЬ PDF</span></button>
+                    </div>
+                </div>
+                <input id="first_date" type="date">
+                <img src="./imges/right-arrow.png">
+                <input id="second_date" type="date"><br>
+                <div class="change_date">
+                    <button value="1" class="active_btn">День</button>
+                    <button value="7">Неделя</button>
+                    <button value="14">2 недели</button>
+                    <button value="31">Месяц</button>
+                    <button value="92">3 месяца</button>
+                    <button value="181">Полгода</button>
+                </div>
+                <div class="table_device">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="table__name__row">Начало</th>
+                                <th class="table__name__row">Тип работ</th>
+                                <th class="table__name__row">Работы</th>
+                                <th class="table__name__row">Результат</th>
+                                <th class="table__name__row">Пользовтель</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <template id="works_table">
+        <tr>
+        </tr>
+    </template>
+    <script src="./js/tabs.js"></script>
+    <script src="./js/analytics.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function savePDF() {
+            const opt = {
+                filename: 'myfile.pdf',
+                html2canvas: { scale: 2, windowHeight: 800 },
+                jsPDF: { orientation: 'landscape' }
+            };
+            html2pdf(document.body, opt);
+        }
+    </script>
+</body>
+
+</html>
