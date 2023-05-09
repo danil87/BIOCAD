@@ -6,5 +6,3 @@ function setActiveSelect(select) {
         select.classList.remove('active_select');
     }
 }
-
-export { setActiveSelect }
