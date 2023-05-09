@@ -1,6 +1,6 @@
-import { getOneDevice, getOneFavoriteDevice, deleteFavoriteDevice, createFavoriteDevice, putDevice } from "./queryDevice.js";
-import { getWorks } from "./queryWorks.js";
-import { setActiveSelect } from "./functions.js";
+import { getOneDevice, getOneFavoriteDevice, deleteFavoriteDevice, createFavoriteDevice, putDevice } from "js/queryDevice.js";
+import { getWorks } from "js/queryWorks.js";
+import { setActiveSelect } from "js/functions.js";
 
 const url = new URL(window.location.href);
 
