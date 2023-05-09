@@ -21,13 +21,11 @@ async function putWork(work) {
             'Content-type': 'application/json; charset=UTF-8'
         },
         body: JSON.stringify(work)
-    }).then(res => {
-        console.log(res);
     }).catch(err => console.log(err));
 }
 
 async function deleteWork(id){
     await fetch (`/work/${id}`, {
         method: 'DELETE'
-    }).then((res => console.log(res))).catch(err => console.log(err));
+    }).catch(err => console.log(err));
 }

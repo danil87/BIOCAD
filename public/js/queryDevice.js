@@ -36,8 +36,6 @@ async function putDevice(device) {
             'Content-type': 'application/json; charset=UTF-8'
         },
         body: JSON.stringify(device)
-    }).then(res => {
-        console.log(res);
     }).catch(err => console.log(err));
 }
 
@@ -48,8 +46,6 @@ async function putFavoriteDevice(favorite_device) {
             'Content-type': 'application/json; charset=UTF-8'
         },
         body: JSON.stringify(favorite_device)
-    }).then(res => {
-        console.log(res);
     }).catch(err => console.log(err));
 }
 
@@ -60,11 +56,11 @@ async function createFavoriteDevice(device_id, user_id = 1){
             'Content-type': 'application/json; charset=UTF-8'
         },
         body: JSON.stringify({device_id: device_id, user_id: user_id})
-    }).then(res => console.log(res)).catch(err => console.log(err));
+    }).catch(err => console.log(err));
 }
 
 async function deleteFavoriteDevice(device_id, user_id = 1){
     await fetch (`/favorite/device/${device_id}/${user_id}`, {
         method: 'DELETE'
-    }).then((res => console.log(res))).catch(err => console.log(err));
+    }).catch(err => console.log(err));
 }
