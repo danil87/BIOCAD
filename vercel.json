@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "name": "biocad",
+    "builds": [
+        {
+            "src": "script.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/server.js"
+        }
+    ]
+}
