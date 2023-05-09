@@ -1,9 +1,4 @@
-import { getOneDevice, getOneFavoriteDevice, deleteFavoriteDevice, createFavoriteDevice, putDevice } from "js/queryDevice.js";
-import { getWorks } from "js/queryWorks.js";
-import { setActiveSelect } from "js/functions.js";
-
 const url = new URL(window.location.href);
-
 window.onload = function () {
     test();
     defaultValue();
