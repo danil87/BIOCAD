@@ -6,10 +6,10 @@ window.onload = function () {
 
 async function test() {
     const device = await getOneDevice(url.searchParams.get('device'));
-    if(!device){
+    if (!device) {
         window.location.href = '/error';
     }
-    let isFavoriteDevice = Boolean((await getOneFavoriteDevice(device.id)).length);
+    let isFavoriteDevice = Boolean(device.favorite_id);
 
     const nameDevice = document.querySelector('.name_device');
     const divisionDevice = document.querySelector('.division_device');
@@ -25,24 +25,19 @@ async function test() {
     iconDevice.src = device.img && device.img !== 'undefined' ? device.img : '../imges/unknow.png';
 
     setActiveSelect(deviceAtWork);
-    if (isFavoriteDevice) {
-        const children = isFavorite.children;
-        children[0].style.display = 'none';
-        children[1].style.display = 'block';
-    }
+    console.log(isFavoriteDevice);
+    const children = isFavorite.querySelector('img');
+    children.src = isFavoriteDevice ? './imges/heart-icon_34407.png' : './imges/3643770-favorite-heart-like-likes-love-loved_113432.png';
+
     isFavorite.onclick = async () => {
-        const children = isFavorite.children;
         if (isFavoriteDevice) {
             await deleteFavoriteDevice(device.id);
-            children[1].style.display = 'none';
-            children[0].style.display = 'block';
         }
         else {
             await createFavoriteDevice(device.id);
-            children[0].style.display = 'none';
-            children[1].style.display = 'block';
         }
         isFavoriteDevice = !isFavoriteDevice
+        children.src = isFavoriteDevice ? './imges/heart-icon_34407.png' : './imges/3643770-favorite-heart-like-likes-love-loved_113432.png';
     };
 
     deviceAtWork.onchange = async (event) => {
@@ -59,7 +54,7 @@ async function defaultValue() {
     let now = new Date();
 
     const firstDate = document.querySelector('#first_date')
-    firstDate.valueAsDate = now;
+    firstDate.valueAsDate = new Date('2002-04-04');
 
     now.setDate(now.getDate() + 1);
 
@@ -105,6 +100,9 @@ function setWorks(works) {
                 column.innerHTML = element[i];
                 row.appendChild(column);
                 column.setAttribute('valign', 'top');
+                if(i === 'works'){
+                    column.style.minWidth = '462px';   
+                }
             }
         }
         const el = rows.content.cloneNode(true);

@@ -29,16 +29,6 @@ async function getOneDevice(id){
     return device[0];
 }
 
-async function getOneFavoriteDevice(device_id, user_id = 2){
-    let device;
-    const response = await fetch(`/favorite/device/${device_id}/${user_id}`);
-    const prom = response.json();
-    await prom.then(data => {
-        device = data;
-    });
-    return device;
-}
-
 async function putDevice(device) {
     await fetch('/device', {
         method: 'PUT',
@@ -51,7 +41,19 @@ async function putDevice(device) {
     }).catch(err => console.log(err));
 }
 
-async function createFavoriteDevice(device_id, user_id = 2){
+async function putFavoriteDevice(favorite_device) {
+    await fetch('/favorite/device', {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        },
+        body: JSON.stringify(favorite_device)
+    }).then(res => {
+        console.log(res);
+    }).catch(err => console.log(err));
+}
+
+async function createFavoriteDevice(device_id, user_id = 1){
     await fetch('/favorite/device', {
         method: 'POST',
         headers: {
@@ -61,7 +63,7 @@ async function createFavoriteDevice(device_id, user_id = 2){
     }).then(res => console.log(res)).catch(err => console.log(err));
 }
 
-async function deleteFavoriteDevice(device_id, user_id = 2){
+async function deleteFavoriteDevice(device_id, user_id = 1){
     await fetch (`/favorite/device/${device_id}/${user_id}`, {
         method: 'DELETE'
     }).then((res => console.log(res))).catch(err => console.log(err));

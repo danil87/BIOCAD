@@ -15,7 +15,8 @@ CREATE TABLE users(
 CREATE TABLE favorite_devices(
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id),
-    device_id INTEGER REFERENCES devices(id)
+    device_id INTEGER REFERENCES devices(id),
+    notifcation BOOLEAN
 );
 
 CREATE TABLE works(

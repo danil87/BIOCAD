@@ -9,7 +9,7 @@ class WorksController {
 
     async getWorks(req, res) {
         const { device_id, firstDate, secondDate } = req.body;
-        const works = await db`SELECT works.id as id, to_char(start, dd.mm.yyyy) as start, type_work, works, result, users.name as user_name
+        const works = await db`SELECT works.id as id, to_char(start, 'dd.mm.yyyy') as start, type_work, works, result, users.name as user_name
         FROM works JOIN users ON works.user_id = users.id
         WHERE device_id = ${device_id} AND works.start >= ${firstDate} AND start <= ${secondDate}`;
         res.json(works);
@@ -17,7 +17,7 @@ class WorksController {
 
     async getAllWorks(req, res) {
         const { device_id } = req.params;
-        const works = await db`SELECT works.id as id, to_char(start, dd.mm.yyyy) as start, type_work, works, result, users.name as user_name
+        const works = await db`SELECT works.id as id, to_char(start, 'dd.mm.yyyy') as start, type_work, works, result, users.name as user_name
         FROM works JOIN users ON works.user_id = users.id
         WHERE device_id = ${device_id}`;
         res.json(works);
