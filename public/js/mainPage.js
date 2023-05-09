@@ -50,6 +50,7 @@ async function setEventSearch(devices) {
     const search = document.querySelector('.search');
 
     search.onkeyup = () => {
+        console.log('test');
         tbody.replaceChildren();
         outPutDivices(devices.filter(el =>  {
             return (el.name && el.name.toLowerCase().includes(search.value.toLowerCase())) || 
