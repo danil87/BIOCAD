@@ -3,7 +3,7 @@ const db = require('../db');
 class UsersController {
     async createUser(req, res){
         const {name} = req.body;
-        const newUser = await db`INSERT INTO users(name) VALUES('${name}') RETURNING *`;
+        const newUser = await db`INSERT INTO users(name) VALUES(${name}) RETURNING *`;
         res.json(newUser);
     }
     
@@ -20,7 +20,7 @@ class UsersController {
 
     async updateUser(req, res){
         const {id, name} = req.body;
-        const user = await db`UPDATE user SET name = '${name}' WHERE id = ${id}`;
+        const user = await db`UPDATE user SET name = ${name} WHERE id = ${id}`;
         res.json(user);
     }
 

@@ -3,7 +3,10 @@ const db = require('../db');
 class DevicesController {
     async createDevice(req, res) {
         const { name, at_work, img, division, number  } = req.body;
-        const newDevice = await db`INSERT INTO devices(name, at_work, img, division, number) VALUES('${name}', '${at_work}', '${img}', '${division}', '${number}') RETURNING *`;
+        console.log(req.body)
+        const newDevice = await db`INSERT INTO devices(name, at_work, img, division, number) 
+                                    VALUES(${name}, ${at_work}, ${img}, ${division}, ${number}) 
+                                    RETURNING *`;
         res.json(newDevice);
     }
 
@@ -21,7 +24,7 @@ class DevicesController {
 
     async updateDevice(req, res) {
         const { id, name, at_work, img, division, number } = req.body;
-        const device = await db`UPDATE devices SET name = '${name}', at_work = '${at_work}', img = '${img}', division = '${division}', number = '${number}' WHERE id = ${id}`;
+        const device = await db`UPDATE devices SET name = ${name}, at_work = ${at_work}, img = ${img}, division = ${division}, number = ${number} WHERE id = ${id}`;
         res.json({ message: "success" });
     }
 
