@@ -1,8 +1,6 @@
 import { getFavoriteDevices, putDevice } from './queryDevice.js';
 import { setActiveSelect } from "./functions.js";
 
-const tbody = document.querySelector('.rows__devices');
-
 window.onload = function () {
     awd();
 }
