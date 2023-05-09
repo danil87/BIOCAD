@@ -66,4 +66,3 @@ async function deleteFavoriteDevice(device_id, user_id = 2){
         method: 'DELETE'
     }).then((res => console.log(res))).catch(err => console.log(err));
 }
-export { getDevices, getOneDevice, putDevice, getFavoriteDevices, getOneFavoriteDevice, deleteFavoriteDevice, createFavoriteDevice }

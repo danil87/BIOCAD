@@ -31,4 +31,3 @@ async function deleteWork(id){
         method: 'DELETE'
     }).then((res => console.log(res))).catch(err => console.log(err));
 }
-export { getWorks, putWork, deleteWork }

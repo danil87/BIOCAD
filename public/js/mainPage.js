@@ -1,6 +1,3 @@
-import { getFavoriteDevices, putDevice } from './queryDevice.js';
-import { setActiveSelect } from "./functions.js";
-
 window.onload = function () {
     awd();
 }
