@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 const server = express();
 
 server.listen(PORT, () => console.log('server start'));
-
+server.use(express.static('public'));
 server.get('/', (req, res) => {
     displayPage(req, res, 'main.html');
 })
